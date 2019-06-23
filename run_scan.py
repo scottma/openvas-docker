@@ -22,6 +22,10 @@ print('Starting OpenVAS')
 
 os.system('BUILD=true /start')
 
+print('generate cert')
+
+openvas-mkcert -f -q
+
 print('Starting scan')
 
 omp_logon = "-u admin -w admin -h 127.0.0.1 -p 9390"
