@@ -20,7 +20,7 @@ if len(sys.argv) < 3:
 
 print('Running openvas-mkcert')
 
-start_cert_task = "openvas-mkcert -f -q"
+start_cert_task = "which omp"
 start_cert_task_response = subprocess.check_output(start_cert_task, stderr=subprocess.STDOUT, shell=True)
 print("start_cert_task: {}".format(start_cert_task_response))
 
