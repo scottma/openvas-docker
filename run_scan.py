@@ -18,13 +18,17 @@ configs = [
 if len(sys.argv) < 3:
     sys.exit('Usage: %s <scan target> <output file>' % sys.argv[0])
 
+print('Running openvas-mkcert')
+
+start_cert_task = "openvas-mkcert -f -q"
+start_cert_task_response = subprocess.check_output(start_cert_task, stderr=subprocess.STDOUT, shell=True)
+print("start_cert_task: {}".format(start_cert_task_response))
+
+
+
 print('Starting OpenVAS')
 
 os.system('BUILD=true /start')
-
-print('generate cert')
-
-openvas-mkcert -f -q
 
 print('Starting scan')
 
