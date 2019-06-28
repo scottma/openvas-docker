@@ -20,7 +20,7 @@ if len(sys.argv) < 3:
 
 print('Running openvas-mkcert')
 
-start_cert_task = "which omp"
+start_cert_task = "openvas-manage-certs -f -q"
 start_cert_task_response = subprocess.check_output(start_cert_task, stderr=subprocess.STDOUT, shell=True)
 print("start_cert_task: {}".format(start_cert_task_response))
 
@@ -40,7 +40,7 @@ print(create_target_response)
 target_id = etree.XML(create_target_response).xpath("//create_target_response")[0].get("id")
 print("target_id: {}".format(target_id))
 
-create_task = ("omp {} -C --target={} --config={} --name=scan").format(omp_logon, target_id, configs[2])
+create_task = ("omp {} -C --target={} --config={} --name=scan").format(omp_logon, target_id, configs[7])
 task_id = subprocess.check_output(create_task, stderr=subprocess.STDOUT, shell=True).strip()
 print("task_id: {}".format(task_id))
 
